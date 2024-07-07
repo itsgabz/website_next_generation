@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { Fira_Code } from "next/font/google";
 import { getServerSession } from "next-auth";
 import type { Metadata } from "next";
@@ -5,7 +6,6 @@ import "../styles/globals.scss";
 import qs from "qs";
 import Layout from "@/components/Layout/Layout";
 import SessionProvider from "./../components/SessionProvider";
-import { redirect } from "next/navigation";
 
 const params = {
 	nested: true,
