@@ -11,6 +11,7 @@ export async function getPageContent(slug: string[]) {
 			},
 		},
 	};
+
 	const query = qs.stringify(params, { addQueryPrefix: true });
 	let response, data, page, pageRelation, pageContent;
 
@@ -31,7 +32,7 @@ export async function getPageContent(slug: string[]) {
 	}
 
 	try {
-		page = data.data.attributes.items.data.find((item: { attributes: { url: string } }) => item.attributes.url.endsWith(slug[0]));
+		page = data?.data?.attributes?.items?.data?.find((item: { attributes: { url: string } }) => item?.attributes?.url?.endsWith(slug[0]));
 		pageRelation = page?.attributes?.page_relation?.data;
 
 		if (!pageRelation) {
