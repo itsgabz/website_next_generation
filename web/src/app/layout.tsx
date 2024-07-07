@@ -5,6 +5,7 @@ import "../styles/globals.scss";
 import qs from "qs";
 import Layout from "@/components/Layout/Layout";
 import SessionProvider from "./../components/SessionProvider";
+import { redirect } from "next/navigation";
 
 const params = {
 	nested: true,
@@ -35,7 +36,6 @@ async function getPageProps() {
 		const data = await response.json();
 		return data.data.attributes.items.data;
 	} catch (error) {
-		console.error("Error fetching page props:", error);
 		return [];
 	}
 }
@@ -48,13 +48,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 		const props = await getPageProps();
 		pageProps.push(...props);
 	} catch (error) {
-		console.error("Error fetching page properties:", error);
+		redirect("/error/500");
 	}
 
 	try {
 		session = await getServerSession();
 	} catch (error) {
-		console.error("Error fetching server session:", error);
+		redirect("/error/500");
 	}
 
 	return (
