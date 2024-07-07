@@ -26,8 +26,12 @@ export async function GET() {
 		return Response.json("Homepage contains no data");
 	}
 
+	if (!Array.isArray(homePageData?.data?.attributes?.body)) {
+		return Response.json("Body has no content");
+	}
+
 	const newsSections = homePageData.data.attributes.body.flatMap((contentEntry, i) => {
-		if ("newsCount" in contentEntry) {
+		if ("newsCount" in contentEntry && "headline" in contentEntry) {
 			return { index: i, newsCount: contentEntry.newsCount, headline: contentEntry.headline };
 		}
 		return [];
