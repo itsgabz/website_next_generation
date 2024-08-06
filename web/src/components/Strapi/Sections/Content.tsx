@@ -57,7 +57,7 @@ export default function PageContent({ entries }: ContentProps) {
 			case "Accordion":
 				return <div className="text-white">Accordion</div>;
 			default:
-				return <Card headline={entry.headline} text={entry.description} />;
+				return <Card headline={entry.headline} text={entry.description} button={entry.button} />;
 		}
 	};
 
