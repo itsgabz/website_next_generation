@@ -16,7 +16,7 @@ export default function Card({ headline, text, button, hasShadow = false }: Card
 			<h2 className="h2-prefix">{headline}</h2>
 			{text && <Markdown className="markdown">{text}</Markdown>}
 			{button && (
-				<Link className="btn-primary block ml-auto mt-6 mr-0" href={button.url}>
+				<Link className="btn-primary block w-fit ml-auto mt-6 mr-0" href={button.url}>
 					{button.text}
 				</Link>
 			)}
