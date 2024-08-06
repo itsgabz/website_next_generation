@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { Fira_Code } from "next/font/google";
 import { getServerSession } from "next-auth";
 import type { Metadata } from "next";
@@ -28,21 +29,33 @@ async function getPageProps() {
 	const query = qs.stringify(params, { addQueryPrefix: true });
 
 	try {
-		const response = await fetch(`${process.env.CMS_API}/menus/1${query}`, {
-			// headers: {
-			//     authorization: `Bearer ${process.env.CMS_TOKEN}`,
-			// },
-		});
-
-		return (await response.json()).data.attributes.items.data;
+		const response = await fetch(`${process.env.CMS_API}/menus/1${query}`);
+		if (!response.ok) {
+			throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+		}
+		const data = await response.json();
+		return data.data.attributes.items.data;
 	} catch (error) {
 		return [];
 	}
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-	const pageProps = await getPageProps();
-	const session = await getServerSession();
+	const pageProps = [];
+	let session = null;
+
+	try {
+		const props = await getPageProps();
+		pageProps.push(...props);
+	} catch (error) {
+		redirect("/error/500");
+	}
+
+	try {
+		session = await getServerSession();
+	} catch (error) {
+		redirect("/error/500");
+	}
 
 	return (
 		<SessionProvider session={session}>
