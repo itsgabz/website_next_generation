@@ -56,14 +56,14 @@ install:
 
 init-env:
 	test -f .env || cp .env.example .env
-	test -f web/.env || cp .env.example web/.env
+	cd web/ && ( test -f .env || cp .env.example .env )
 	cd cms/ && ( test -f .env || cp .env.example .env )
 	@echo '-----------------------------------------------------'
-	@echo 'please update the .env files with the missing secrets'
+	@echo 'please update the default secrets in the .env files'
 
 check-env:
 	./scripts/check-env.sh .env.example .env
-	./scripts/check-env.sh .env.example web/.env
+	./scripts/check-env.sh web/.env.example web/.env
 	./scripts/check-env.sh cms/.env.example cms/.env
 
 logs:
