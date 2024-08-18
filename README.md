@@ -13,10 +13,21 @@ Of course, we will involve you, the community, in the design by collecting ideas
 
 # Getting started
 
-To initially build the project on your local computer, you can use the docker-compose.local.yml file, e.g. with docker compose -f docker-compose.local.yml up --build 
+## Prerequisites
+
+* docker
+
+## Quick start
+
+The application can be run locally by executing the bash script `local-startup.sh`.
+
+## Manual start
+
+The following steps must be carried out: 
+1. Copy contents of `.env.example` files on `root`, `root/cms` and `root/web` into `.env` file
+2. Execute docker-compose file for local environment with the following command: `docker compose -f docker-compose.local.yml up `
 
 For more information about the headless CMS used in this project, visit the official documentation: https://docs.strapi.io/
-
 
 # Requirements
 
