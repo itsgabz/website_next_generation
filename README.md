@@ -20,7 +20,15 @@ Prerequisites
 
 ### Getting started
 
-Run the application locally with these make commands `make dev`.
+Run the application locally with these make commands.
+
+```sh
+# start prebuilt containers
+make start
+
+# or start containers for local development
+make dev
+```
 
 This will setup default configuration (including dummy secrets),
 install npm dependencies and start the application using docker on port `3000`.

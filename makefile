@@ -1,6 +1,7 @@
 .PHONY: clean build run logsmake
 
 DC=docker compose -f docker-compose.local.yml
+DC_DEV=docker compose -f docker-compose.dev.yml
 
 default: help
 init: init-env check-env install
@@ -16,6 +17,9 @@ help:
 	@echo "TARGETS:"
 	@echo "  init:                                initialize project"
 	@echo
+	@echo "  // For starting application"
+	@echo "  start:                                 use prebuilt containers"
+	@echo
 	@echo "  // For local development"
 	@echo "  dev:                                 start local development"
 	@echo "   dev-all:                            start all dev containers"
@@ -23,7 +27,7 @@ help:
 	@echo "   dev-cms:                            start dev cms image"
 	@echo "   dev-db:                             start dev db image"
 	@echo
-	@echo "  // For building containers"
+	@echo "  // For building local containers"
 	@echo "  build:                               build all"
 	@echo "   build-web:                          build web image"
 	@echo "   build-cms:                          build cms image"
@@ -73,6 +77,9 @@ clean:
 	$(DC) down
 	$(DC) down --volumes
 
+start:
+	$(DC_DEV) up -d
+
 stop:
 	$(DC) stop
 
@@ -84,6 +91,7 @@ stop-cms:
 
 stop-db:
 	$(DC) stop db
+
 
 ## DOCKER DEVELOPMENT
 dev: init dev-all
