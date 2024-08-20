@@ -42,6 +42,11 @@ The following steps must be carried out:
 
 For more information about the headless CMS used in this project, visit the official documentation: https://docs.strapi.io/
 
+# New Design
+
+The link below leads to a publicly accessible Miro board that contains a first draft of the new website design:
+https://miro.com/app/board/uXjVKobQViM=/?share_link_id=158721849826
+
 # Requirements
 
 Add your requirements here:
