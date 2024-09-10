@@ -8,8 +8,8 @@
 		"start": "next start",
 		"lint": "next lint",
 		"lint:fix": "next lint --fix",
-		"format:check": "prettier --check .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"format:check": "prettier --check ."
 	},
 	"dependencies": {
 		"@tabler/icons-react": "^2.45.0",
