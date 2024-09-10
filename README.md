@@ -38,7 +38,7 @@ install npm dependencies and start the application using docker on port `3000`.
 The following steps must be carried out:
 1. Copy contents of `.env.example` files on `root`, `root/cms` and `root/web` into `.env` file
 2. Install npm dependencies with `npm install` in the `root`, `root/cms` and `root/web` folder.
-3. Startup: `docker compose -f docker-compose.local.yml up`
+3. Startup: `docker compose up`
 
 For more information about the headless CMS used in this project, visit the official documentation: https://docs.strapi.io/
 

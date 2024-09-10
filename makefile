@@ -1,7 +1,7 @@
 .PHONY: clean build run logsmake
 
-DC=docker compose -f docker-compose.local.yml
-DC_DEV=docker compose -f docker-compose.dev.yml
+DC=docker compose
+DC_DEV=docker compose -f compose.dev.yml
 
 default: help
 init: init-env check-env install
@@ -50,7 +50,7 @@ help:
 
 install:
 	@echo "Installing root dependencies"
-	@npm install
+	npm install
 	@echo "Installing web dependencies"
 	@echo "==========================="
 	cd web && . ${NVM_DIR}/nvm.sh && nvm use && npm install
