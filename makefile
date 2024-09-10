@@ -80,6 +80,9 @@ clean:
 start:
 	$(DC_DEV) up -d
 
+start-local:
+	$(DC) up -d
+
 stop:
 	$(DC) stop
 

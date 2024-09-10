@@ -23,5 +23,17 @@ The setup for this project consists of three main parts: the website (web), the 
 - Docker and Docker Compose
 - Node.js and npm
 - MySQL 8
+- Node version manager like NVM
+- Make
 
 ### Getting Started
+
+```
+git checkout development
+
+nvm use # if you have node version manager installed otherwise ensure you have the correct node version, specified in .nvmrc
+
+make init # installs dependencies and creates .env files
+
+make start-local # starts containers for local development
+```
