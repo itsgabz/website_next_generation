@@ -31,9 +31,18 @@ The setup for this project consists of three main parts: the website (web), the 
 ```
 git checkout development
 
-nvm use # if you have node version manager installed otherwise ensure you have the correct node version, specified in .nvmrc
+# if you have node version manager installed otherwise ensure you have the correct node version, specified in .nvmrc
+nvm use
 
-make init # installs dependencies and creates .env files
+# installs dependencies, creates .env files, starts containers for local development
+make dev
 
-make start-local # starts containers for local development
+# if you need to rebuild containers
+make build dev
+
+# with logs
+make build dev logs
+
+# for further commands, see makefile
+make
 ```
