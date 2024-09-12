@@ -18,7 +18,7 @@ help:
 	@echo "  init:                                initialize project"
 	@echo
 	@echo "  // For starting application"
-	@echo "  start:                                 use prebuilt containers"
+	@echo "  start:                               use prebuilt containers"
 	@echo
 	@echo "  // For local development"
 	@echo "  dev:                                 start local development"
