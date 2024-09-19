@@ -8,7 +8,7 @@ The `development`-branch is the primary branch for ongoing work, while the `main
 
 We follow the Conventional Commits specification. Please use the structure explained in the [quick summary](https://www.conventionalcommits.org/en/v1.0.0/#summary) of the specification. Commit messages are written in the imperative present tense, describing what the commit does, as if giving a command or instruction. Examples are listed below.
 
-```
+```text
 feat(web): add redirect instead of console.log (due to linting)
 fix(ci): avoid running deploy job on PR pushes
 chore(deps-dev): bump eslint-plugin-unused-imports from 3.1.0 to 3.2.0 in /cms
@@ -21,28 +21,22 @@ The setup for this project consists of three main parts: the website (web), the 
 ### Prerequisites
 
 - Docker and Docker Compose
-- Node.js and npm
+- Node.js and NPM
 - MySQL 8
-- Node version manager like NVM
+- Node version manager NVM
 - Make
 
 ### Getting Started
 
-```
+```sh
 git checkout development
 
 # if you have node version manager installed otherwise ensure you have the correct node version, specified in .nvmrc
 nvm use
 
-# installs dependencies, creates .env files, starts containers for local development
-make dev
-
-# if you need to rebuild containers
-make build dev
-
-# with logs
-make build dev logs
-
-# for further commands, see makefile
+# see makefile for available commands
 make
+
+# i.e install dependencies, setup .env files, start containers for local development and show logs
+make dev logs
 ```
