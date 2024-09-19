@@ -46,6 +46,7 @@ help:
 	@echo "   stop-cms:                           stop only cms"
 	@echo "   stop-db:                            stop only db"
 
+
 ## GENERAL
 
 install:
@@ -70,18 +71,14 @@ check-env:
 	./scripts/check-env.sh web/.env.example web/.env
 	./scripts/check-env.sh cms/.env.example cms/.env
 
-logs:
-	$(DC) logs -t -f web db cms
-
-clean:
-	$(DC) down
-	$(DC) down --volumes
-
 start:
 	$(DC_DEV) up -d
 
-start-local:
-	$(DC) up -d
+logs:
+	$(DC) logs -t -f
+
+clean:
+	$(DC) down -v
 
 stop:
 	$(DC) stop
@@ -113,6 +110,7 @@ dev-cms:
 dev-database:
 	$(DC) up -d db
 
+
 ## DOCKER BUILD
 build: init
 	$(DC) build
@@ -123,7 +121,8 @@ build-web:
 build-cms:
 	$(DC) build cms
 
-## Tooling
+
+## TOOLING
 lint:
 	cd web && . ${NVM_DIR}/nvm.sh && nvm use && npm run lint:fix
 	cd cms && . ${NVM_DIR}/nvm.sh && nvm use && npm run lint:fix
