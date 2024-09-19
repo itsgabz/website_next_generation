@@ -33,7 +33,7 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
-        source: "./compose.dev.yml,./.env"
+        source: "./compose.prod.yml,./.env"
         target: "~/${{ github.event.repository.name }}/"
 
     - name: pull & start container images
@@ -46,7 +46,7 @@ jobs:
         script: |
           cd ~/${{ github.event.repository.name }}/
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{github.actor}} --password-stdin
-          docker compose -f compose.dev.yml pull
-          docker compose -f compose.dev.yml down
-          docker compose -f compose.dev.yml up -d --wait --no-build --force-recreate
-          docker compose -f compose.dev.yml logs -t -n 50
+          docker compose -f compose.prod.yml pull
+          docker compose -f compose.prod.yml down
+          docker compose -f compose.prod.yml up -d --wait --no-build --force-recreate
+          docker compose -f compose.prod.yml logs -t -n 50

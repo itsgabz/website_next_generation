@@ -1,7 +1,7 @@
 .PHONY: clean build run logsmake
 
 DC=docker compose
-DC_DEV=docker compose -f compose.dev.yml
+DC_PROD=docker compose -f compose.prod.yml
 
 default: help
 init: init-env check-env install
@@ -72,7 +72,7 @@ check-env:
 	./scripts/check-env.sh cms/.env.example cms/.env
 
 start:
-	$(DC_DEV) up -d
+	$(DC_PROD) up -d
 
 logs:
 	$(DC) logs -t -f
