@@ -18,6 +18,8 @@ chore(deps-dev): bump eslint-plugin-unused-imports from 3.1.0 to 3.2.0 in /cms
 
 The setup for this project consists of three main parts: the website (web), the content management system (cms), and the database (db). The website is built with Next.js, while the CMS is Strapi, and MySQL 8 is used for the database. You'll need Node.js with npm for both web and cms. If you want to start the applications without docker please refer to the specific Node.js versions indicated in the `.nvmrc` file or the `engines` field in `package.json`. However, we use Docker to facilitate the development process. Both the website and CMS have their own Dockerfile. All components are managed together in a docker-compose file.
 
+For more information about the headless CMS used in this project, visit the official documentation: https://docs.strapi.io/
+
 ### Prerequisites
 
 - Docker and Docker Compose
