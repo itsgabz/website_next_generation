@@ -1,7 +1,7 @@
 .PHONY: clean build run logsmake
 
-DC=docker compose -f docker-compose.local.yml
-DC_DEV=docker compose -f docker-compose.dev.yml
+DC=docker compose
+DC_PROD=docker compose -f compose.prod.yml
 
 default: help
 init: init-env check-env install
@@ -18,7 +18,7 @@ help:
 	@echo "  init:                                initialize project"
 	@echo
 	@echo "  // For starting application"
-	@echo "  start:                                 use prebuilt containers"
+	@echo "  start:                               use prebuilt containers"
 	@echo
 	@echo "  // For local development"
 	@echo "  dev:                                 start local development"
@@ -46,11 +46,12 @@ help:
 	@echo "   stop-cms:                           stop only cms"
 	@echo "   stop-db:                            stop only db"
 
+
 ## GENERAL
 
 install:
 	@echo "Installing root dependencies"
-	@npm install
+	npm install
 	@echo "Installing web dependencies"
 	@echo "==========================="
 	cd web && . ${NVM_DIR}/nvm.sh && nvm use && npm install
@@ -70,15 +71,14 @@ check-env:
 	./scripts/check-env.sh web/.env.example web/.env
 	./scripts/check-env.sh cms/.env.example cms/.env
 
+start:
+	$(DC_PROD) up -d
+
 logs:
-	$(DC) logs -t -f web db cms
+	$(DC) logs -t -f
 
 clean:
-	$(DC) down
-	$(DC) down --volumes
-
-start:
-	$(DC_DEV) up -d
+	$(DC) down -v
 
 stop:
 	$(DC) stop
@@ -110,6 +110,7 @@ dev-cms:
 dev-database:
 	$(DC) up -d db
 
+
 ## DOCKER BUILD
 build: init
 	$(DC) build
@@ -120,7 +121,8 @@ build-web:
 build-cms:
 	$(DC) build cms
 
-## Tooling
+
+## TOOLING
 lint:
 	cd web && . ${NVM_DIR}/nvm.sh && nvm use && npm run lint:fix
 	cd cms && . ${NVM_DIR}/nvm.sh && nvm use && npm run lint:fix
