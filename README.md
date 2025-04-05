@@ -29,16 +29,16 @@ Add your requirements here:
 * We want to continue using MySQL 8 as the database system.
 * We want the website to be fundamentally secure and avoid typical web application vulnerabilities (like SQL injection, XSS, ...) by design. 
 * The hashing of the user passwords is to be migrated to a hashing procedure that corresponds to the state of the art.
-* The frontend/backend stack shall:
+* The frontend/backend stack:
   - should be maintainable and expandable in the future with reasonable effort
-  - be opensource based
-  - the components used should be vital
+  - should be opensource based
+  - components used should be vital
   - shall be efficient with server resources
 
 
 # Idea collection
 
-This is a unfinished and unstructed list of ideas:
+This is an unfinished and unstructured list of ideas:
 
 - Tutorial section
 - Vim tips revival
